@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Motivation</title>
+
+<style>
+    :root {
+        --primary: #2563eb;
+        --secondary: #1e40af;
+        --bg: #f8fafc;
+        --text: #1f2937;
+        --card: #ffffff;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed,
+            #ec4899
+        );
+        padding: 20px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 700px;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+        color: var(--text);
+        margin-bottom: 20px;
+        font-size: 2rem;
+    }
+
+    .quote {
+        min-height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        line-height: 1.6;
+        color: #374151;
+        margin-bottom: 30px;
+        transition: all 0.4s ease;
+    }
+
+    .fade {
+        animation: fadeIn 0.5s ease;
+    }
+
+    button {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 14px 28px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        background: var(--secondary);
+        transform: translateY(-2px);
+    }
+
+    button:active {
+        transform: translateY(0);
+    }
+
+    .footer {
+        margin-top: 20px;
+        color: #6b7280;
+        font-size: 0.9rem;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .card {
+            padding: 25px;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+        }
+
+        .quote {
+            font-size: 1.1rem;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="card">
+        <h1>🚀 Daily Motivation</h1>
+
+        <div id="quote" class="quote">
+            Click the button to get inspired.
+        </div>
+
+        <button onclick="showMotivation()">
+            Get Motivation
+        </button>
+
+        <div class="footer">
+            Keep learning. Keep building. Keep growing.
+        </div>
+    </div>
+</div>
+
+<script>
+const quotes = [
+    "Success is the sum of small efforts repeated day after day.",
+    "Your future is created by what you do today, not tomorrow.",
+    "Discipline beats motivation when motivation fades.",
+    "Every expert was once a beginner who refused to quit.",
+    "Focus on progress, not perfection.",
+    "Small improvements every day lead to remarkable results.",
+    "The best way to predict the future is to create it.",
+    "Hard work compounds just like interest.",
+    "Dream big, start small, act now.",
+    "Consistency is the superpower behind every achievement.",
+    "You are one decision away from a completely different life.",
+    "The obstacle is often the path forward.",
+    "Growth begins where comfort ends.",
+    "Don't wait for opportunity. Create it.",
+    "Today's effort is tomorrow's confidence."
+];
+
+let lastIndex = -1;
+
+function showMotivation() {
+    let index;
+
+    do {
+        index = Math.floor(Math.random() * quotes.length);
+    } while (index === lastIndex && quotes.length > 1);
+
+    lastIndex = index;
+
+    const quoteElement = document.getElementById("quote");
+
+    quoteElement.classList.remove("fade");
+    void quoteElement.offsetWidth;
+
+    quoteElement.textContent = quotes[index];
+    quoteElement.classList.add("fade");
+}
+</script>
+
+</body>
+</html>
